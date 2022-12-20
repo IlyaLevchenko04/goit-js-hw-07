@@ -10,7 +10,7 @@ const galerry = document.querySelector('.gallery');
 
  function image (evt) {
     let photo = evt.target;
-    const i = galleryItems.find(({original}) => photo.dataset.source === original);
+    let i = galleryItems.find(({original}) => photo.dataset.source === original);
    
     evt.preventDefault();
     lightbox.open(i.original);
