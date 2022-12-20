@@ -23,7 +23,8 @@ function image (evt){
     instance.show();
     document.addEventListener('keydown', (evt) => 
     {if(evt.key === 'Escape'){
-        instance.close();
+        instance.close()
+        document.removeEventListener('keydown', evt);
     }})
     
 }

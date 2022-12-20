@@ -11,11 +11,7 @@ const galerry = document.querySelector('.gallery');
  function image (evt) {
     let photo = evt.target;
     const i = galleryItems.find(({original}) => photo.dataset.source === original);
-    let lightbox = new SimpleLightbox('.gallery a',{ 
-        captionsData: 'alt',
-        captionPosition : 'bottom',
-        captionDelay : 250
-     });
+   
     evt.preventDefault();
     lightbox.open(i.original);
     document.addEventListener('keydown', (evt) => 
@@ -24,6 +20,11 @@ const galerry = document.querySelector('.gallery');
     }})
  }
 
-
+ 
+ let lightbox = new SimpleLightbox('.gallery a',{ 
+        captionsData: 'alt',
+        captionPosition : 'bottom',
+        captionDelay : 250
+     });
 galerry.addEventListener('click', image);
 
