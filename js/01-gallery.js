@@ -26,7 +26,7 @@ function image (evt){
       onShow : () => {
         document.addEventListener('keydown', onEsc);
       },
-      onclose : () => {
+      onClose : () => {
         document.removeEventListener('keydown', onEsc)
       }
     });
