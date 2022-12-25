@@ -8,23 +8,12 @@ const galerry = document.querySelector('.gallery');
  </a>`, '');
  galerry.insertAdjacentHTML('beforeend', markup);
 
- function image (evt) {
-    let photo = evt.target;
-    let i = galleryItems.find(({original}) => photo.dataset.source === original);
-   
-    evt.preventDefault();
-    lightbox.open(i.original);
-    document.addEventListener('keydown', (evt) => 
-    {if(evt.key === 'Escape'){
-        lightbox.close();
-    }})
- }
+
 
  
- let lightbox = new SimpleLightbox('.gallery a',{ 
+  new SimpleLightbox('.gallery a',{ 
         captionsData: 'alt',
         captionPosition : 'bottom',
         captionDelay : 250
      });
-galerry.addEventListener('click', image);
 

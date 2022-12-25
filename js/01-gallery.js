@@ -14,19 +14,30 @@ const markup = galleryItems.reduce((acc, {preview, original, description}) => ac
 </div>`, '');
 galerry.insertAdjacentHTML('beforeend', markup);
 
+
+
 function image (evt){
     evt.preventDefault();
    
     let photo = evt.target;
     const i = galleryItems.find(({original}) => photo.dataset.source === original);
-    const instance = basicLightbox.create(`<div class="modal"><img src = '${i.original}' alt = '${i.description}'></div>`);
-    instance.show();
-    document.addEventListener('keydown', (evt) => 
-    {if(evt.key === 'Escape'){
-        instance.close()
-        document.removeEventListener('keydown', evt);
-    }})
-    
+    var instance = basicLightbox.create(`<div class="modal"><img src = '${i.original}' alt = '${i.description}'></div>`,
+    {
+      onShow : () => {
+        document.addEventListener('keydown', onEsc);
+      },
+      onclose : () => {
+        document.removeEventListener('keydown', onEsc)
+      }
+    });
+    function onEsc (evt) {
+  if(evt.key === 'Escape'){
+    instance.close();
 }
+}
+    instance.show();    
+}
+
+
 
 galerry.addEventListener('click', image);
